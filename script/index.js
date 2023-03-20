@@ -158,11 +158,11 @@ btnSearch.addEventListener('click', function(e){ // On click, filter by input te
   e.preventDefault();
   let listProducts = data;
   let textFromSearch = '';
+  const sectionTag = document.querySelector('.main-cards');
   
   let inputSearch = document.getElementById('input-text').value;
   textFromSearch = removeSpecialChar(inputSearch);
   
-  const sectionTag = document.querySelector('.main-cards');
   const newUlTag = document.createElement('ul');
   newUlTag.id = 'cardsList';
   
@@ -175,9 +175,9 @@ btnSearch.addEventListener('click', function(e){ // On click, filter by input te
       sectionTag.innerHTML = '';
       newUlTag;
       newUlTag.appendChild(liCard);
-    } 
+      sectionTag.appendChild(newUlTag);
+    }
   }
-  sectionTag.appendChild(newUlTag);
 });
 
 const allItemsli = document.getElementById('all-items');
