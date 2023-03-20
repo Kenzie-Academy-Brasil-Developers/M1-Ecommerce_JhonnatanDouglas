@@ -6,36 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style/reset.css" />
     <link rel="stylesheet" href="./style/style.css" />
-    
+    <script src="./script/database.js" defer></script>
+    <script src="./script/index.js" defer></script>
     <title>Weartake</title>
+    <link rel="icon" href="https://www.svgrepo.com/show/498619/alpha-w.svg"/>
   </head>
   <body>
     <header>
       <div class="header-container">
-        <h1>Weartake</h1>
+        <h1 id="logo-start">Weartake</h1>
         <nav>
           <ul class="header-menu">
-            <li>Todos</li>
-            <li>Acessórios</li>
-            <li>Camisetas</li>
+            <li id="all-items" class="category-tittle">Todos</li>
+            <li id="accessories-items" class="category-tittle">Acessórios</li>
+            <li id="tshirt-items" class="category-tittle">Camisetas</li>
           </ul>
         </nav>
       </div>
     </header>
     <main>
       <section class="main-cards">
-        <ul></ul>
+        <ul id="cardsList">
+        </ul>
       </section>
       <section class="main-details">
         <div class="main-search">
+
           <input
             class="search-input"
+            id="input-text"
             type="text"
-            placeholder="Digite aqui sua pesquisa"
-          />
-          <button class="search-button">Pesquisar</button>
+            name="name"
+            placeholder="Digite aqui sua pesquisa"/>
+          <button class="search-button" id="btn-search" type="submit">Pesquisar</button>
+
         </div>
-        <aside>
+        <aside id="aside-container">
           <div class="cart-title">
             <h4>Carrinho de compras</h4>
           </div>
@@ -43,22 +49,17 @@
             <h5>Carrinho Vazio</h5>
             <p>Adicione Itens</p>
           </div>
-
           <div class="cart-products">
             <ul class="cart-list"></ul>
           </div>
           <div class="cart-details">
             <div class="details-values">
-              <p>Quantidade:</p><span>0</span>
+              <p>Quantidade:</p><span id="counter">0</span>
             </div>
             <div class="details-values">
               <p>Total:</p>
-              <span>R$0,00</span>
+              <span id="product-value">R$ 0,00</span>
             </div>
-
-          </div>
-
-          
           </div>
         </aside>
       </section>

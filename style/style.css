@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+*{
+  font-family: 'Inter', sans-serif;
+}
+
 header {
   width: 100%;
   height: 10vh;
@@ -18,6 +23,22 @@ header h1 {
   gap: 20px;
 }
 
+.category-tittle{
+  font-weight: bold;
+  color: #333333;
+  text-decoration: none;  
+  border-bottom: 2px solid #ffffff;
+  cursor: pointer; 
+}
+
+.category-tittle:hover{
+  color: #37268c;
+  text-decoration: none; 
+  border-bottom: 2px solid #37268c; 
+  transition: 0.5s;
+  cursor: pointer; 
+}
+
 .header-container {
   width: 100%;
   height: 100%;
@@ -26,6 +47,10 @@ header h1 {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+#logo-start{
+  cursor: pointer;
 }
 
 main {
@@ -37,40 +62,59 @@ main {
   flex-direction: row;
   font-family: Inter, sans-serif;
 }
+
 .main-cards {
+  height: 773px;
   min-height: 50vh;
   width: 75%;
+}
+
+.notFound{
+  display: flex;
+  font-size: 20px;
+  font-weight: bold;
+  height: 773px;
+  width: 889px;
+  justify-content: center;
+  align-items: center;
 }
 
 .main-details {
   display: flex;
   flex-direction: column;
-  min-height: 50vh;
+  min-height: 50px;
   width: 25%;
 }
+
 .main-search {
   display: flex;
   flex-direction: row;
-  height: 20%;
+  height: 10%;
 }
+
 .search-input {
-  height: 40%;
+  height: 60px;
   width: 70%;
   border: none;
   background-color: #f5f5f5;
 }
 
 .search-button {
-  height: 40%;
+  height: 62px;
   width: 30%;
   border: none;
   background-color: #2e245e;
   color: #ffffff;
+  cursor: pointer;
 }
 
 .main-details aside {
   width: 100%;
   height: 80%;
+}
+
+#aside-container{
+  height: 700px;
 }
 
 .cart-title {
@@ -81,9 +125,11 @@ main {
   align-items: center;
   justify-content: center;
 }
+
 .cart-title h4 {
   font-size: 1.2rem;
 }
+
 .cart-empty {
   height: 60%;
   width: 100%;
@@ -93,6 +139,12 @@ main {
   align-items: center;
   justify-content: center;
   gap: 10px;
+}
+
+.cart-products{
+  background-color: #f5f5f5;
+  width: 100%;
+  overflow-y: auto;
 }
 
 .cart-empty h5 {
@@ -110,10 +162,144 @@ main {
   flex-direction: column;
   justify-content: space-around;
 }
+
 .details-values {
   width: 100%;
   color: #ffffff;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+/* Cards configuration */
+
+#cardsList {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: space-between;
+  height: 785px;
+  flex-wrap: wrap;
+}
+
+.card-list{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  width: 250px;
+  height: 375px;
+  border: 2px solid #f5f5f5;
+  border-radius: 1%;
+}
+
+.card-list:hover{
+  transition: 0.5s;
+  border: 2px solid #37268c;
+}
+
+.img-position{
+  display: flex;
+  justify-content: center;
+  width: 250px;
+  background-color:#f5f5f5;
+}
+
+.product-img{
+  object-fit: contain;
+}
+
+.description-position{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.category{
+  font-size: 14px;
+  padding: 7px 5px;
+  background-color: #37268c;
+  color: #ffffff;
+}
+
+.product-tittle{
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.product-description{
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.product-price{
+  color: #37268c;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.addToCart{
+  font-size: 16px;
+  font-weight: bold;
+  color: #333333;
+  text-decoration: none;  
+  border-bottom: 2px solid #ffffff;
+  cursor: pointer; 
+}
+
+.addToCart:hover{
+  color: #37268c;
+  text-decoration: none; 
+  border-bottom: 2px solid #37268c; 
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+/* Area inside the cart */
+
+.cart-product-area{
+  display: flex;
+  flex-direction: row;
+}
+.img-cart-area{
+  margin: 10px 15px;
+  padding: 5px;
+  width: 70px;
+  height: 70px;
+  background-color: #ffffff;
+  border-radius: 1%;
+  object-fit: cover;
+}
+.context-cart-product{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.cart-item-tittle{
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.cart-item-description{
+  font-size: 14px;
+  color: #37268c;
+  font-weight: bold;
+}
+
+.anchor-remove{
+  font-size: 14px;
+  text-decoration: none;  
+  border-bottom: 2px solid #f5f5f5;
+  cursor: pointer; 
+}
+
+.anchor-remove:hover{
+  color: #37268c;
+  text-decoration: none; 
+  border-bottom: 2px solid #37268c; 
+  transition: 0.5s;
+  cursor: pointer;
 }
