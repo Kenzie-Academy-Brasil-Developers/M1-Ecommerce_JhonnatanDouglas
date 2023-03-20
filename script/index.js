@@ -1,6 +1,3 @@
-let quantityInCart = 0;
-let totalProductValue = 0;
-
 function createList(productsList) { // Renders all cards from the database
   const ulTag = document.querySelector('#cardsList');
   
@@ -9,6 +6,8 @@ function createList(productsList) { // Renders all cards from the database
     ulTag.appendChild(liTag);
   }
 };
+
+let quantityInCart = 0;
 
 function addCard(list, i) {
   // Creating the elements
@@ -32,10 +31,9 @@ function addCard(list, i) {
   anchorTag.innerText = list[i].addCart;
   anchorTag.href = '#';
   
+  // Configuring element classes
   liTag.id = `li-${list[i].id}`;
   anchorTag.id = `a-${list[i].id}`;
-  
-  // Configuring element classes
   liTag.classList = 'card-list';
   divImg.classList = 'img-position';
   imgTag.classList = 'product-img';
@@ -88,14 +86,14 @@ function shoppingCartList(card){
   const anchorTag = document.createElement('a');
 
   // Configuring the elements
-  liTag.id = `d_${card.id}`;
   imgTag.src = card.img;
   imgTag.alt = card.nameItem;
   h3Tag.innerText = card.nameItem;
   spanTag.innerText = `R$ ${card.value.toFixed(2).toString().replace('.', ',')}`;
   anchorTag.innerText = 'Remover produto';
-      
+  
   // Configuring element classes
+  liTag.id = `d_${card.id}`;
   liTag.classList = 'cart-product-area';
   imgTag.classList = 'img-cart-area';
   divContext.classList = 'context-cart-product';
@@ -134,6 +132,8 @@ function shoppingCartList(card){
   return liTag;
 };
 
+let totalProductValue = 0;
+
 function totalCalculation(productValue, condition){ // Calculates and formats the total amount in the cart
   if(condition == 'sum') {
     totalProductValue = totalProductValue + productValue;
@@ -156,20 +156,18 @@ const btnSearch = document.getElementById('btn-search');
 
 btnSearch.addEventListener('click', function(e){ // On click, filter by input text
   e.preventDefault();
-  let listProducts = data;
-  let textFromSearch = '';
-  const sectionTag = document.querySelector('.main-cards');
-  
-  let inputSearch = document.getElementById('input-text').value;
-  textFromSearch = removeSpecialChar(inputSearch);
-  
+
   const newUlTag = document.createElement('ul');
-  newUlTag.id = 'cardsList';
+  const sectionTag = document.querySelector('.main-cards');
+  let inputSearch = document.getElementById('input-text').value;
   
-  for (let i = 0; i < listProducts.length; i++) {
-    let nameProduct = removeSpecialChar(listProducts[i].nameItem);
-    let valueProduct = listProducts[i].value;
-    const liCard = addCard(listProducts, i);
+  newUlTag.id = 'cardsList';
+  let textFromSearch = removeSpecialChar(inputSearch);
+  
+  for (let i = 0; i < data.length; i++) {
+    let nameProduct = removeSpecialChar(data[i].nameItem);
+    let valueProduct = data[i].value;
+    const liCard = addCard(data, i);
 
     if ((nameProduct.includes(textFromSearch)) || (valueProduct == textFromSearch)){
       sectionTag.innerHTML = '';
@@ -185,7 +183,6 @@ const allItemsli = document.getElementById('all-items');
 allItemsli.addEventListener('click', function(e){ // Filter by "All" in the site header
   e.preventDefault();
   const cardlist = document.querySelector('#cardsList');
-
   cardlist.innerHTML = '';
   createList(data);
 });
@@ -194,22 +191,20 @@ const accessoriesItemsli = document.getElementById('accessories-items');
 
 accessoriesItemsli.addEventListener('click', function(e){ // Filter by "Accessories" in the site header
   e.preventDefault();
-  let listProducts = data;
-  const sectionTag = document.querySelector('.main-cards');
-
-  const cardlist = document.querySelector('#cardsList');
-  cardlist.innerHTML = '';
-  createList(listProducts);
-  
   const newUlTag = document.createElement('ul');
+  const sectionTag = document.querySelector('.main-cards');
+  const cardlist = document.querySelector('#cardsList');
+  
+  cardlist.innerHTML = '';
+  createList(data);
+  
   newUlTag.id = 'cardsList';
-
   const accessories = document.querySelector('.category-Acessórios');
   let formatAcessories = removeSpecialChar(accessories.innerText);
 
-  for (let i = 0; i < listProducts.length; i++){
-    const liCard = addCard(listProducts, i);
-    let categoryList = removeSpecialChar(listProducts[i].tag[0]);
+  for (let i = 0; i < data.length; i++){
+    const liCard = addCard(data, i);
+    let categoryList = removeSpecialChar(data[i].tag[0]);
 
     if (categoryList == formatAcessories){
       sectionTag.innerHTML = '';
@@ -218,29 +213,26 @@ accessoriesItemsli.addEventListener('click', function(e){ // Filter by "Accessor
     } 
   }
   sectionTag.appendChild(newUlTag);
-})
+});
 
 const tshirtItemsli = document.getElementById('tshirt-items');
 
 tshirtItemsli.addEventListener('click', function(e){ // Filter by "T-shirts" in the site header
   e.preventDefault();
-  let listProducts = data;
-  const sectionTag = document.querySelector('.main-cards');
-
-  const cardlist = document.querySelector('#cardsList');
-  cardlist.innerHTML = '';
-  createList(listProducts);
-
   const newUlTag = document.createElement('ul');
+  const sectionTag = document.querySelector('.main-cards');
+  const cardlist = document.querySelector('#cardsList');
+  
+  cardlist.innerHTML = '';
+  createList(data);
+  
   newUlTag.id = 'cardsList';
-
   const tshirt = document.querySelector('.category-Camisetas');
   let formatTshirt = removeSpecialChar(tshirt.innerText);
   
-  for (let i = 0; i < listProducts.length; i++) {
-
-    const liCard = addCard(listProducts, i);
-    let categoryList = removeSpecialChar(listProducts[i].tag[0]);
+  for (let i = 0; i < data.length; i++) {
+    const liCard = addCard(data, i);
+    let categoryList = removeSpecialChar(data[i].tag[0]);
     
     if (categoryList == formatTshirt) {
       sectionTag.innerHTML = '';
@@ -249,7 +241,7 @@ tshirtItemsli.addEventListener('click', function(e){ // Filter by "T-shirts" in 
     } 
   }
   sectionTag.appendChild(newUlTag);
-})
+});
 
 const home = document.getElementById('logo-start');
 
@@ -270,6 +262,6 @@ function removeSpecialChar(str){ // Function checks if the user typed any specia
     }
   }
   return strTemp.toLowerCase();
-}
+};
 
 createList(data);
