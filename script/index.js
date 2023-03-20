@@ -73,7 +73,6 @@ function addCard(list, i) {
     let sendToCart = shoppingCartList(card);
     cartList.appendChild(sendToCart);
   })
-
   return liTag;
 }
 
@@ -123,7 +122,6 @@ function shoppingCartList(card){
       } else if (parseInt(counter.innerText) > 0){
         cartProducts.style.display = 'block';
       }
-
       listRemove.remove();
     });
     
@@ -251,7 +249,6 @@ tshirtItemsli.addEventListener('click', function(e){ // Filter by "T-shirts" in 
     } 
   }
   sectionTag.appendChild(newUlTag);
-
 })
 
 const home = document.getElementById('logo-start');
@@ -272,7 +269,6 @@ function removeSpecialChar(str){ // Function checks if the user typed any specia
       strTemp += str[i];
     }
   }
-
   return strTemp.toLowerCase();
 }
 
