@@ -59,7 +59,7 @@ function addCard(list, i) {
 
     cartEmpty.style.display = 'none';
     cartProducts.style.display = 'block';
-    cartProducts.style.height = '417.67px';
+    cartProducts.style.height = '504.67px';
 
     quantityInCart++;
     counter.innerHTML = quantityInCart;
