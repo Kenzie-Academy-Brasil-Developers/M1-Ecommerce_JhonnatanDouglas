@@ -152,39 +152,104 @@ function searchCard(id, list){ // Search which card will enter the cart
   }
 };
 
+function resetPage() { // Back to the homepage
+  const cardlist = document.querySelector('#cardsList');
+  cardlist.innerHTML = '';
+  cardlist.style.display = 'flex';
+  createList(data);
+
+  const newUlTag = document.createElement('ul');
+  const sectionTag = document.querySelector('.main-cards');
+
+  newUlTag.id = 'cardsList';
+    
+  sectionTag.innerHTML = '';
+  for (let i = 0; i < data.length; i++) {
+    const liCard = addCard(data, i);
+    newUlTag;
+    newUlTag.appendChild(liCard);
+  }
+  sectionTag.appendChild(newUlTag);
+}
+
 const btnSearch = document.getElementById('btn-search');
 
 btnSearch.addEventListener('click', function(e){ // On click, filter by input text
   e.preventDefault();
 
   const newUlTag = document.createElement('ul');
+  const newDivTag = document.createElement('div');
+  const newImgTag = document.createElement('img');
+  const newh2Tag = document.createElement('h2');
+  const newSpanTag = document.createElement('span');
   const sectionTag = document.querySelector('.main-cards');
   let inputSearch = document.getElementById('input-text').value;
+
+  newDivTag.id = 'container-error-page';
+  newDivTag.append(newImgTag, newh2Tag, newSpanTag);
+  sectionTag.appendChild(newDivTag);
+  const showError = document.querySelector('#container-error-page');
+  showError.style.display = 'flex';
   
   newUlTag.id = 'cardsList';
   let textFromSearch = removeSpecialChar(inputSearch);
-  
+    
   for (let i = 0; i < data.length; i++) {
     let nameProduct = removeSpecialChar(data[i].nameItem);
     let valueProduct = data[i].value;
     const liCard = addCard(data, i);
-
+    
     if ((nameProduct.includes(textFromSearch)) || (valueProduct == textFromSearch)){
       sectionTag.innerHTML = '';
       newUlTag;
       newUlTag.appendChild(liCard);
       sectionTag.appendChild(newUlTag);
-    }
+      showError.style.display = 'none';
+    } 
   }
+
+  if (showError.style.display == 'flex') {
+  sectionTag.innerHTML = '';
+  newUlTag;
+
+    for (let i = 0; i < data.length; i++) {
+      const liCard = addCard(data, i);
+      newUlTag.appendChild(liCard);
+    }
+    sectionTag.appendChild(newUlTag);
+  
+  const cardlist = document.querySelector('#cardsList');
+  cardlist.style.display = 'none';
+
+  newDivTag.id = 'container-error-page';
+  newImgTag.id = 'img-error';
+  newh2Tag.id = 'tittle-error';
+  newSpanTag.id = 'back-to-home';
+
+  newImgTag.src = 'https://www.svgrepo.com/show/176343/error-page.svg';
+  newImgTag.alt = 'Página não encontrada';
+  newh2Tag.innerText = 'Oops! Página não encontrada!';
+  newSpanTag.innerText = 'Voltar para o início';
+
+  newDivTag.append(newImgTag, newh2Tag, newSpanTag);
+  sectionTag.appendChild(newDivTag);
+
+  const showError = document.querySelector('#container-error-page');
+  showError.style.display = 'flex';
+
+  const backToHome = document.querySelector('#back-to-home');
+    backToHome.addEventListener('click', function(e){
+      e.preventDefault();
+      resetPage();
+    })
+  } 
 });
 
 const allItemsli = document.getElementById('all-items');
 
 allItemsli.addEventListener('click', function(e){ // Filter by "All" in the site header
   e.preventDefault();
-  const cardlist = document.querySelector('#cardsList');
-  cardlist.innerHTML = '';
-  createList(data);
+  resetPage();
 });
 
 const accessoriesItemsli = document.getElementById('accessories-items');
@@ -196,6 +261,7 @@ accessoriesItemsli.addEventListener('click', function(e){ // Filter by "Accessor
   const cardlist = document.querySelector('#cardsList');
   
   cardlist.innerHTML = '';
+  cardlist.style.display = 'flex';
   createList(data);
   
   newUlTag.id = 'cardsList';
@@ -224,6 +290,7 @@ tshirtItemsli.addEventListener('click', function(e){ // Filter by "T-shirts" in 
   const cardlist = document.querySelector('#cardsList');
   
   cardlist.innerHTML = '';
+  cardlist.style.display = 'flex';
   createList(data);
   
   newUlTag.id = 'cardsList';
@@ -247,9 +314,7 @@ const home = document.getElementById('logo-start');
 
 home.addEventListener('click', function(e){ // Reset and go to the beginning of the site
   e.preventDefault();
-  const cardlist = document.querySelector('#cardsList');
-  cardlist.innerHTML = '';
-  createList(data);
+  resetPage()
 });
 
 function removeSpecialChar(str){ // Function checks if the user typed any special characters. Then remove the special character
