@@ -228,8 +228,8 @@ btnSearch.addEventListener('click', function(e){ // On click, filter by input te
 
   newImgTag.src = 'https://www.svgrepo.com/show/176343/error-page.svg';
   newImgTag.alt = 'Página não encontrada';
-  newh2Tag.innerText = 'Oops! Página não encontrada!';
-  newSpanTag.innerText = 'Voltar para o início';
+  newh2Tag.innerText = 'Ops! Produto não encontrado!'.toUpperCase();
+  newSpanTag.innerText = 'início'.toUpperCase();
 
   newDivTag.append(newImgTag, newh2Tag, newSpanTag);
   sectionTag.appendChild(newDivTag);
