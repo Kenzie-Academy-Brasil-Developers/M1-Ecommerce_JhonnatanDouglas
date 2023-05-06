@@ -1,4 +1,4 @@
-# **Nome do Projeto:** 🏁 Entrega: Projeto Final - Página E-Commerce
+# 🏁 Entrega: Projeto Final - Página E-Commerce
 
 ### :date: **Período do Projeto:** Módulo 1 - Semana 7
 ### :iphone: **Mobile First =** False
